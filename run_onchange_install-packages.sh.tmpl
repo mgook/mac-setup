@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+if ! command -v brew &> /dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+brew bundle install --file="{{ .chezmoi.sourceDir }}/Brewfile"
+
+# Brewfile hash (변경 시 이 스크립트가 재실행됨): {{ include "Brewfile" | sha256sum }}

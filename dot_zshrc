@@ -1,0 +1,14 @@
+# 1. Homebrew 경로 설정 (설치된 도구들을 인식하기 위함)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# 2. zsh-syntax-highlighting (명령어 색상 강조)
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# 3. zsh-autosuggestions (자동 완성 제안)
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# 4. Starship 프롬프트 초기화
+eval "$(starship init zsh)"
+
+# 5. zoxide (스마트 cd)
+eval "$(zoxide init zsh)"
