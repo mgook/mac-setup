@@ -27,6 +27,11 @@ chezmoi init --apply https://github.com/mgook/mac-setup.git
 - [ ] 시스템 설정 → 개인정보 보호 및 보안 → **손쉬운 사용**: Karabiner-Elements 허용
 - 승인 후 Karabiner-Elements 재시작하면 Caps Lock/Control→F19 매핑 정상 작동
 
+### F19 → 한영 전환 (CrossEX)
+Caps Lock/Control가 F19로 바뀌는 건 karabiner.json에 있지만, **F19를 눌렀을 때 실제로 한영 전환이 되는 건 macOS 설정이 아니라 iniLINE의 CrossEX라는 별도 백그라운드 서비스 때문**. 이건 Homebrew 패키지가 아니라서 Brewfile에 없고 자동 설치 안 됨.
+- [ ] CrossEX 설치 (iniLINE 공식 사이트에서 다운로드, 설치 후 로그인 시 자동 실행되는 LaunchAgent 등록됨)
+- [ ] 설치 후 F19로 한영 전환 잘 되는지 확인 (안 되면 CrossEX 자체 설정에서 키 재지정 필요할 수 있음 — 포터블 설정 파일을 못 찾아서 chezmoi로 옮길 수 없었음)
+
 ### Logi Options+
 - [ ] 입력 모니터링 + 손쉬운 사용 권한 허용
 - [ ] 공식 export 기능 없어서 마우스/키보드 버튼 매핑은 새로 설정 (5분 내)
