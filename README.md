@@ -3,10 +3,13 @@
 새 맥에서 복원:
 
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/mgook/mac-setup.git
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+eval "$(/opt/homebrew/bin/brew shellenv)" && \
+brew install chezmoi && \
+chezmoi init --apply https://github.com/mgook/mac-setup.git
 ```
 
-(Homebrew도 없는 완전 새 맥 기준. chezmoi 자체 설치 스크립트라 brew 선설치 불필요 — Homebrew는 이 과정 중 `run_onchange_install-packages.sh.tmpl`이 자동으로 설치함)
+(Homebrew를 먼저 설치해서 chezmoi도 brew로 관리 — get.chezmoi.io 자체 설치 스크립트를 쓰면 brew 관리 밖에 깔려서 나중에 `brew upgrade`로 안 잡힘)
 
 이 한 줄로 자동 처리됨:
 - Homebrew 설치 (없으면 자동 설치, `run_onchange_install-packages.sh.tmpl`이 처리)
