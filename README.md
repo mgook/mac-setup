@@ -19,6 +19,27 @@ chezmoi init --apply https://github.com/mgook/mac-setup.git
 - raycast 폴더의 Script Commands(ps5.sh, dual.sh) 적용
 - **F19 → "입력 메뉴에서 다음 소스 선택" 단축키 자동 설정** (`run_once_set-f19-input-source-hotkey.sh`, 재로그인 후 적용됨)
 
+## 새 프로그램 설치 후 — dotfile 추가하는 법
+
+chezmoi는 새로 생긴 설정 파일을 자동으로 잡아주지 않음. 새 프로그램 설치할 때마다 직접 확인해서 추가해야 함.
+
+```bash
+# 1. 새 프로그램 설치
+brew install --cask 무슨앱
+
+# 2. 추적 안 되고 있는 파일 확인 (대부분 캐시/노이즈, 설정 파일만 골라보기)
+chezmoi unmanaged ~/.config
+chezmoi unmanaged ~
+
+# 3. 의미있는 설정 파일이면 추가
+chezmoi add ~/.config/무슨앱/config.toml
+
+# 4. 커밋 & 푸시
+chezmoi cd && git add -A && git commit -m "add 무슨앱 config" && git push
+```
+
+`~/Library/Application Support`, `~/Library/Preferences`에 있는 건 대부분 캐시/세션/텔레메트리/사용 기록이라 그대로 추가하면 안 됨 (예: 브라우저 히스토리, 검색 인덱스). 진짜 사용자가 편집하는 설정 파일인지 확인하고 추가할 것.
+
 ## 수동으로 해야 하는 것
 
 ### 계정/인증
