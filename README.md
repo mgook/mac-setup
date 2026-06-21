@@ -12,6 +12,8 @@ chezmoi init --apply https://github.com/mgook/mac-setup.git
 - Brewfile 기반 패키지/앱 전체 설치
 - zshrc, gitconfig, gitignore_global 적용
 - starship, ghostty, cmux, **karabiner.json**(Caps Lock/Control→F19 매핑 포함) 적용
+- raycast 폴더의 Script Commands(ps5.sh, dual.sh) 적용
+- **F19 → "입력 메뉴에서 다음 소스 선택" 단축키 자동 설정** (`run_once_set-f19-input-source-hotkey.sh`, 재로그인 후 적용됨)
 
 ## 수동으로 해야 하는 것
 
@@ -27,10 +29,10 @@ chezmoi init --apply https://github.com/mgook/mac-setup.git
 - [ ] 시스템 설정 → 개인정보 보호 및 보안 → **손쉬운 사용**: Karabiner-Elements 허용
 - 승인 후 Karabiner-Elements 재시작하면 Caps Lock/Control→F19 매핑 정상 작동
 
-### F19 → 한영 전환 (CrossEX)
-Caps Lock/Control가 F19로 바뀌는 건 karabiner.json에 있지만, **F19를 눌렀을 때 실제로 한영 전환이 되는 건 macOS 설정이 아니라 iniLINE의 CrossEX라는 별도 백그라운드 서비스 때문**. 이건 Homebrew 패키지가 아니라서 Brewfile에 없고 자동 설치 안 됨.
-- [ ] CrossEX 설치 (iniLINE 공식 사이트에서 다운로드, 설치 후 로그인 시 자동 실행되는 LaunchAgent 등록됨)
-- [ ] 설치 후 F19로 한영 전환 잘 되는지 확인 (안 되면 CrossEX 자체 설정에서 키 재지정 필요할 수 있음 — 포터블 설정 파일을 못 찾아서 chezmoi로 옮길 수 없었음)
+### F19 → 한영 전환
+~~CrossEX 때문인 줄 알았으나 확인 결과 무관함.~~ 실제로는 macOS 자체 기능 (시스템 설정 → 키보드 → 입력 소스 → "입력 메뉴에서 다음 소스 선택" = F19). `com.apple.symbolichotkeys.plist`에 저장되는 값이라 `run_once_set-f19-input-source-hotkey.sh`로 자동 복원되도록 처리함. 별도 수동 작업 불필요.
+
+CrossEX(iniLINE)는 이 머신에 설치되어 있긴 한데, 설치 로그 확인 결과 **2025-11-20에 다른 설치 프로그램(추정: 은행/공공기관 보안 프로그램 묶음)에 의해 같이 깔린 것으로 보임** — 같은 경로에 RaonSecure의 TouchEn nxKey(뱅킹 보안 모듈)도 같이 있었음. F19 한영 전환과는 무관해 보이니 mac-setup에는 포함 안 함. 필요 없으면 제거 검토해도 될 듯.
 
 ### Logi Options+
 - [ ] 입력 모니터링 + 손쉬운 사용 권한 허용
@@ -38,7 +40,7 @@ Caps Lock/Control가 F19로 바뀌는 건 karabiner.json에 있지만, **F19를 
 
 ### Raycast
 - [ ] 손쉬운 사용 권한 허용 (전역 핫키 작동용)
-- [ ] `raycast/raycast-export.rayconfig` 파일을 Raycast 설정 → Advanced → Import로 불러오기
+- [ ] `raycast-export/raycast-export.rayconfig` 파일을 Raycast 설정 → Advanced → Import로 불러오기
 - Pro 구독 아니라서 클라우드 동기화 안 됨, 매번 수동 export/import 필요
 
 ### 그 외

@@ -1,4 +1,3 @@
-tap "hamed-elfayome/claude-usage"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
 # Emacs dependency management
@@ -39,8 +38,6 @@ cask "appcleaner"
 cask "chatgpt-atlas"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
-# Native macOS menu bar app for monitoring Claude AI usage limits
-cask "hamed-elfayome/claude-usage/claude-usage-tracker"
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents
 cask "cmux"
 # AI-powered translator
